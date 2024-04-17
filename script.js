@@ -1,7 +1,9 @@
+// HTML Element variables:
 const messageInput = document.getElementById("message-input");
 const result = document.getElementById("result");
 const checkMessageButton = document.getElementById("check-message-btn");
 
+// Check Button functionality:
 checkMessageButton.addEventListener("click", () => {
   if (messageInput.value === "") {
     alert("Please enter a message.");
@@ -13,4 +15,10 @@ checkMessageButton.addEventListener("click", () => {
   messageInput.value = "";
 });
 
-const isSpam = (msg) => false;
+// Regular expressions:
+const helpRegex = /please help|assist me/i;
+const dollarRegex = /dollars/i;
+const denyList = [helpRegex, dollarRegex];
+
+// Spam Check function:
+const isSpam = (msg) => denyList.some((regex) => regex.test(msg)); // helpRegex.test(msg);
