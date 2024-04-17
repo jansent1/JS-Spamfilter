@@ -18,7 +18,10 @@ checkMessageButton.addEventListener("click", () => {
 // Regular expressions:
 const helpRegex = /please help|assist me/i;
 const dollarRegex = /[0-9]+ (?:hundred|thousand|million|billion)? dollars/i;
-const denyList = [helpRegex, dollarRegex];
+const freeRegex = /(?:^|\s)fr[e3][e3] m[o0]n[e3]y(?:$|\s)/i;
+
+// Actual array with the filters:
+const denyList = [helpRegex, dollarRegex, freeRegex];
 
 // Spam Check function:
 const isSpam = (msg) => denyList.some((regex) => regex.test(msg)); // helpRegex.test(msg);
